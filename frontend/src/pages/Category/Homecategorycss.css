@@ -1,0 +1,38 @@
+/* Default (desktop) */
+.offcanvas {
+  top: 110px !important; /* top-navbar + bottom-navbar height */
+  height: calc(100% - 110px) !important;
+  z-index: 1040 !important;
+}
+
+/* Navbars */
+.top-navbar {
+  z-index: 1050 !important;
+  position: sticky;
+  top: 0;
+  height: 40px; /* set explicit height */
+}
+
+.bottom-navbar {
+  z-index: 1055 !important;
+  position: sticky;
+  top: 40px; /* below top-navbar */
+  height: 40px; /* set explicit height */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  /* On mobile, bottom navbar becomes relative (or height changes) */
+  .bottom-navbar {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    z-index: 1040 !important;
+  }
+
+  /* Adjust offcanvas to open just below top-navbar */
+  .offcanvas {
+    top: 40px !important; /* only below top-navbar */
+    height: calc(100% - 40px) !important;
+  }
+}

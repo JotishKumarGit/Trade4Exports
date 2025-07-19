@@ -1,0 +1,128 @@
+/* Higher z-index for dropdown to appear above bottom navbar */
+.navbar .dropdown-menu {
+    z-index: 1055 !important;
+    position: absolute;
+}
+
+/* Top red navbar */
+.top-navbar {
+    top: 0;
+    z-index: 1060 !important;
+    /* Higher z-index so always on top */
+}
+
+/* Mobile view (max-width: 768px) */
+@media (max-width: 768px) {
+    .top-navbar {
+        z-index: 1 !important;
+        /* override z-index on mobile */
+    }
+}
+
+/* Bottom white navbar should be sticky below the top navbar */
+.bottom-navbar {
+    top: 40px;
+    /* Height of top-navbar - adjust if your navbar height differs */
+    z-index: 1050 !important;
+    /* Slightly less than top-navbar */
+}
+
+/* Offcanvas styles to avoid overlapping navbar */
+.offcanvas {
+    top: 80px !important;
+    /* Sum of top-navbar (40px) + bottom-navbar (approx 40px) */
+    height: calc(100% - 80px) !important;
+    z-index: 1040 !important;
+    /* Lower than navbars */
+}
+
+/* Other styles unchanged */
+.top-menu .divider {
+    position: relative;
+    padding: 0 10px;
+    color: white;
+}
+
+.top-menu .divider:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background-color: white;
+}
+
+.top-navbar .top-menu {
+    flex-wrap: nowrap !important;
+    /* prevent wrapping */
+
+    /* allow horizontal scroll if needed */
+    white-space: nowrap;
+    /* prevent line breaks */
+    gap: 1rem;
+    /* spacing between items */
+    align-items: center;
+    /* vertical align */
+    -webkit-overflow-scrolling: touch;
+    /* smooth scrolling on iOS */
+    z-index: 0;
+}
+
+.nav-dropdown>a {
+    color: white !important;
+}
+
+/* Search container responsive */
+.search-container {
+    min-width: 250px;
+    max-width: 600px;
+}
+
+/* Position dropdown to the right of the toggle */
+.nav-dropdown .dropdown-menu {
+    left: -80% !important;
+    top: 30px !important;
+    margin-top: 0;
+    transform: none !important;
+    min-width: 200px;
+    white-space: nowrap;
+    z-index: 1055;
+    position: absolute;
+}
+
+/* Prevent overflow on small screens */
+@media (max-width: 768px) {
+    .nav-dropdown .dropdown-menu {
+        left: auto !important;
+        right: 0 !important;
+    }
+
+    .search-container {
+        width: 100% !important;
+        margin: 1rem 0;
+    }
+
+    .bottom-navbar {
+        flex-direction: column;
+        align-items: stretch !important;
+
+        /* Fix sticky on mobile */
+        position: relative !important;
+        top: auto !important;
+        z-index: 1040 !important;
+    }
+
+    .bottom-navbar .navbar-brand,
+    .bottom-navbar .d-flex {
+        justify-content: center;
+    }
+
+    /* Offcanvas adjustment on mobile */
+    .offcanvas {
+        top: 40px !important;
+        /* Only below top-navbar on mobile */
+        height: calc(100% - 40px) !important;
+        z-index: 1040 !important;
+    }
+}
